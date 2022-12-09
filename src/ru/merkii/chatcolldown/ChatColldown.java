@@ -10,7 +10,7 @@ public class ChatColldown extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		saveDefaultConfig();
-		Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
+		Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
 	}
 	public static ChatCollDown getInstance() {
 		return instance;
