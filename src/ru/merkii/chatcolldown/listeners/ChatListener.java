@@ -9,17 +9,13 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import ru.merkii.chatcolldown.ChatColldown;
 
 public class ChatListener implements Listener {
-	private ChatColldown plugin;
-	public ChatListener(ChatColldown plugin) {
-		this.plugin = plugin;
-	}
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 		int sec = p.getStatistic(Statistic.PLAY_ONE_TICK) / 20;
-		if(sec < this.plugin.getConfig().getInt("sec-need-time") && !p.hasPermission("chatcolldown.bypass")) {
+		if(sec < ChatColldown.getInstance().getConfig().getInt("sec-need-time") && !p.hasPermission("chatcolldown.bypass")) {
 			e.setCancelled(true);
-			p.sendMessage(this.plugin.getConfig().getString("message").replace("&", "§"));
+			p.sendMessage(ChatColldown.getInstance().getConfig().getString("message").replace("&", "§"));
 		}
 	}
 }
